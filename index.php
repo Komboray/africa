@@ -1,5 +1,5 @@
 <?php
-$ composer require africastalking/africastalking
+// $ composer require africastalking/africastalking
 // Read the variables sent via POST from our API
 $sessionId   = $_POST["sessionId"];
 $serviceCode = $_POST["serviceCode"];
@@ -29,28 +29,29 @@ if ($text == "") {
     // This is a terminal request. Note how we start the response with END
     $response = "END Your account number is ".$accountNumber;
 
-}else if($text == "1*1") { 
-    // This is a second level response where the user selected 1 in the first instance
-    $accountNumber  = "ACC1001";
-
-    // This is a terminal request. Note how we start the response with END
-    $response = "END Your account number is ".$accountNumber;
-
 }else if($text == "2*1") { 
     // This is a second level response where the user selected 2 in the first instance 
-    $destinations= [
-         'Allsoaps' =>'120',
-         'TRM' =>'100',
-         'GCM' =>'80',
-         'GSU' =>'60',
-         'KCA' =>'40',
-         'Muthaiga' =>'20'
+    $destinations = [
+         'Allsoaps' => 120,
+         'TRM' => 100,
+         'GCM' => 80,
+         'GSU' => 60,
+         'KCA' => 40,
+         'Muthaiga' => 20
          
     ];
+    $response = "CON your destination \n";
+    
+    $response .= "1. Allsoaps $destinations['TRM'] ";
+    $response .= "2. Thika road mall $destinations['TRM']";
+    $response .= "3. Garden City Mall $destinations['TRM']";
+    $response .= "4. General Service Unit $destinations['TRM']";
+    $response .= "5. KCA $destinations['KCA']";
+    $response .= "6. Muthaiga $destinations['Muthaiga']";
     
 
     // This is a terminal request. Note how we start the response with END
-    $response = "END Your account number is ".$accountNumber;
+    $response = "END Your Destination is ".$accountNumber;
 
 }
 
